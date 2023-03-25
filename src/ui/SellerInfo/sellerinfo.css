@@ -1,0 +1,17 @@
+.sellerInfoContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.sellerAvatar {
+    width: 200px;
+    height: 200px;
+
+    margin-bottom: 40px;
+}
+
+.sellerNick {
+    color: #FFB833;
+    font-size: 40px;
+    line-height: 40px;
+}

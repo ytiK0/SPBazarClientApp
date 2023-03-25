@@ -1,0 +1,13 @@
+.statistics {
+    margin-top: 15px;
+}
+
+.userStatisticWrap {
+    width: 354px;
+    height: 554px;
+    padding-top: 25px;
+    padding-left: 40px;
+    padding-bottom: 25px;
+    background: #363636;
+    border-radius: 12px;
+}

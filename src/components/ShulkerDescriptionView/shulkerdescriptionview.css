@@ -1,0 +1,27 @@
+.descriptionWrapper {
+}
+
+.descriptionHeading {
+    margin-bottom: 30px;
+
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 40px;
+
+    color: #FFFFFF;
+}
+
+.descriptionContainer {
+    width: 410px;
+    padding: 20px;
+
+    background: #373737;
+    border-radius: 13px;
+}
+
+.description {
+    width: 370px;
+
+    font-size: 20px;
+    line-height: 20px;;
+}

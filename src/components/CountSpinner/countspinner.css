@@ -1,0 +1,91 @@
+.countRollContainer {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 108px;
+    z-index: 2;
+}
+
+.arrowsAndSteps {
+    display: flex;
+}
+
+.downArrow,
+.upArrow {
+    transition: filter .1s linear;
+    -webkit-user-drag: none;
+}
+
+.downArrow {
+    transform: rotate(180deg);
+}
+
+.upArrow:hover,
+.downArrow:hover {
+    filter: brightness(130%);
+}
+
+.arrows {
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+}
+
+.okButton {
+    width: 50px;
+    height: 26px;
+
+    font-size: 20px;
+    line-height: 20px;
+    color: #FFFFFF;
+
+    background: #6DC752;
+    border: 2px solid #417233;
+
+    transition: filter .1s linear;
+}
+
+.okButton:hover {
+    filter: brightness(110%);
+}
+
+.step {
+    width: 46px;
+    height: 24px;
+
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    color: #363636;
+
+    cursor: pointer;
+    user-select: none;
+    background: #D9D9D9;
+    border: 1px solid #8F8F8F;
+}
+
+.step:hover {
+    filter: brightness(130%);
+}
+
+.display {
+    display: block;
+    opacity: 1;
+    animation: Appearance .1s ease-out;
+}
+
+@keyframes Appearance {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}

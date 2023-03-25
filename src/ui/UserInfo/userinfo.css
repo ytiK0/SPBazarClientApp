@@ -1,0 +1,17 @@
+.userInfoContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.userAvatar {
+    width: 200px;
+    height: 200px;
+
+    margin-bottom: 40px;
+}
+
+.userNick {
+    color: #FFB833;
+    font-size: 36px;
+    line-height: 36px;
+}

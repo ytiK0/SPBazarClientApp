@@ -1,0 +1,32 @@
+.shopBodyContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.loadingSpinnerContainer {
+    padding-top: 50px;
+    padding-left: 300px;
+}
+
+.loadingSpinner {
+    width: 300px;
+    height: 300px;
+}
+
+.errorContainer {
+    display: flex;
+    gap: 10px;
+    color: red;
+}
+
+.errorIcon {
+    width: 26px;
+    height: 40px;
+}
+
+.emptyCartsContainer {
+    color: white;
+    font-size: 40px;
+    padding-top: 45px;
+}

@@ -1,0 +1,38 @@
+.shulkerInterface {
+    width: 1056px;
+    height: 498px;
+    padding-top: 32px;
+    padding-left: 42px;
+
+    background-image: url("../../../static/img/ShulkerInterface.png");
+}
+
+.shulkerGrid {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-left: 6px;
+
+    transition-property: background-color, outline;
+    transition-duration: .1s;
+}
+
+.shalkerHeading {
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 48px;
+
+    margin-bottom: 28px;
+
+    color: #000000;
+}
+
+.loadingSpinnerContainer {
+    margin: 0 auto;
+}
+
+.loadingSpinner {
+    width: 600px;
+}

@@ -1,0 +1,34 @@
+.priceSpinnerContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.spinnerDisplayContainer {
+    display: flex;
+
+    background: #404040;
+    border: 2px solid #8F8F8F;
+}
+
+.price {
+    width: 45px;
+    font-size: 36px;
+    background: transparent;
+    border: none;
+    padding-left: 9px;
+}
+
+.changeArrowContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.changeArrow {
+    width: 38px;
+    height: 23px;
+}
+
+.changeArrow:hover {
+    filter: brightness(110%);
+}

@@ -1,0 +1,29 @@
+.headerIcon {
+    display: block;
+}
+
+.headerLogin {
+    display: flex;
+    gap: 6px;
+
+    font-size: 40px;
+    line-height: 40px;
+}
+
+.loginString {
+    color: #FFB833;
+}
+
+.userNick {
+    color: #FFB833;
+    user-select: none;
+}
+
+.userContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+
+    cursor: pointer;
+}

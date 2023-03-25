@@ -1,0 +1,33 @@
+.main {
+    display: flex;
+    gap: 130px
+}
+
+.addNewButton {
+    padding: 17px 40px;
+    margin-bottom: 40px;
+    background: #549B3F;
+    border-radius: 12px;
+    border: none;
+    font-size: 48px;
+    line-height: 48px;
+
+    transition: filter .1s linear;
+}
+
+.addNewButton:hover{
+    filter: brightness(115%);
+}
+
+.wrapper {
+    width: 965px;
+}
+
+.heading {
+    display: inline-block;
+    margin-bottom: 30px;
+
+    font-weight: normal;
+    font-size: 64px;
+    line-height: 64px;
+}

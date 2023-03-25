@@ -1,0 +1,16 @@
+.priceContainer {
+    display: flex;
+    gap: 20px;
+}
+
+.priceSign {
+    font-size: 40px;
+    line-height: 40px;
+}
+
+.price {
+    font-size: 40px;
+    line-height: 40px;
+
+    color: #2FA0A0;
+}

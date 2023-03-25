@@ -1,0 +1,6 @@
+.item,
+.itemImg {
+    width: 72px;
+    height: 72px;
+    scroll-snap-align: start;
+}

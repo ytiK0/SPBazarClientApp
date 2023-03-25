@@ -1,0 +1,10 @@
+.shulkerInfo {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+.shulkerBuild {
+    display: flex;
+    margin-bottom: 30px;
+}

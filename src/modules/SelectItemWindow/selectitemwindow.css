@@ -1,0 +1,30 @@
+.littleShulkerContainer {
+    width: 468px;
+    height: 455px;
+    padding-top: 20px;
+    padding-left: 32px;
+    background: url("../../../static/img/LittleShulker.png");
+    background-size: 468px;
+}
+
+.littleShulkerHeading {
+    margin-bottom: 11px;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 48px;
+    color: #000000;
+}
+
+.itemContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    height: 315px;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    margin-left: 4px;
+}
+
+.itemContainer::-webkit-scrollbar{
+    display: none;
+}

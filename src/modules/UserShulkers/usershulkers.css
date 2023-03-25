@@ -1,0 +1,11 @@
+.shopBodyContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.emptyCartsContainer {
+    color: white;
+    font-size: 40px;
+    padding-top: 45px;
+}

@@ -1,0 +1,42 @@
+.shulkerGridItem {
+    position: relative;
+    width: 96px;
+    height: 96px;
+}
+
+.shulkerCellItem {
+    width: 96px;
+    height: 96px;
+    user-select: none;
+}
+.shulkerGridItem:hover {
+    background-color: #6AAD43;
+    outline: #FFFFFF solid 6px;
+}
+
+.selected{
+    background-color: #3ba9b9 !important;
+    outline: #FFFFFF solid 6px;
+}
+
+.empty:hover {
+    background-color: rgba(0, 0, 0, .2);
+    outline: none;
+}
+
+.shulkerGridItemCount {
+    position: absolute;
+    display: block;
+    right: -6px;
+    bottom: -1px;
+    font-size: 48px;
+    line-height: 48px;
+    user-select: none;
+
+    color: #FFFFFF;
+
+    text-shadow: 6px 6px 0 #404040;
+
+    cursor: default;
+    user-select: none;
+}

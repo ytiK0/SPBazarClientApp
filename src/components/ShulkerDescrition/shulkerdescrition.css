@@ -1,0 +1,32 @@
+.formDescriptionInputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.formInputLabel {
+    color: #FFFFFF;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 40px;
+}
+
+.descriptionTextInput {
+    width: 406px;
+    height: 110px;
+    font-size: 20px;
+    line-height: 20px;
+    color: #FFFFFF;
+
+    resize: none;
+
+    background: #404040;
+    border: 2px solid #8F8F8F;
+}
+
+.descriptionTextInput::placeholder {
+    font-size: 20px;
+    line-height: 20px;
+
+    color: #A9A9A9;
+}

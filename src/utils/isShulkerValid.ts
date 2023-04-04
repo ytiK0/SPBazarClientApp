@@ -1,5 +1,5 @@
-import {ShulkerView} from "../store/reducers/shopReducer/shopReducerTypes";
-import {ShulkerCellProps} from "../store/reducers/shulkerReduser/shulkerReduserTypes";
+import {IShulkerView} from "../store/reducers/shopReducer/shopReducerTypes";
+import {IShulkerCellProps} from "../store/reducers/shulkerReduser/shulkerReduserTypes";
 
 const isTitleValid = (title: string) => {
 	return title.length > 0
@@ -9,7 +9,7 @@ const isDescriptionValid = (description: string) => {
 	return description.length > 0
 }
 
-const isCellsValid = (cells: ShulkerCellProps[]) => {
+const isCellsValid = (cells: IShulkerCellProps[]) => {
 	for (const cell of cells){
 		if (cell.isEmpty)
 			continue
@@ -27,7 +27,7 @@ const isPriceValid = (price: number) => {
 	return price > 0;
 }
 
-export const IsShulkerValid = (shulker: ShulkerView) => {
+export const IsShulkerValid = (shulker: IShulkerView) => {
 	if (!isTitleValid(shulker.title))
 		return [false, "Укажите название шалкера"];
 	else if (!isDescriptionValid(shulker.description))

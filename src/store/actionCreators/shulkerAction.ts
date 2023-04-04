@@ -1,5 +1,5 @@
 import {Dispatch} from "react";
-import {ShulkerAction, ShulkerActionTypes, ShulkerCellProps} from "../reducers/shulkerReduser/shulkerReduserTypes";
+import {ShulkerAction, ShulkerActionTypes, IShulkerCellProps} from "../reducers/shulkerReduser/shulkerReduserTypes";
 
 export const setActiveCell = (cellId: number) => {
 	return async (dispatch: Dispatch<ShulkerAction>) => {
@@ -43,7 +43,7 @@ export const setPrice = (price: number) => {
 	}
 }
 
-export const updateCells = (cells: ShulkerCellProps[]) => {
+export const updateCells = (cells: IShulkerCellProps[]) => {
 	return async (dispatch: Dispatch<ShulkerAction>) => {
 		dispatch({type:ShulkerActionTypes.UPDATE_CELL, payload: cells});
 	}

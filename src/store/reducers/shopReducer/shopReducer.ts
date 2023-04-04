@@ -1,13 +1,13 @@
-import {ShopAction, ShopActionTypes, ShopState} from "./shopReducerTypes";
+import {ShopAction, ShopActionTypes, IShopState} from "./shopReducerTypes";
 
-const initialState: ShopState = {
+const initialState: IShopState = {
 	shulker: null,
 	carts: [],
 	loading: false,
 	error: null
 }
 
-export const shopReducer = (state = initialState, action: ShopAction): ShopState => {
+export const shopReducer = (state = initialState, action: ShopAction): IShopState => {
 	switch (action.type){
 		case ShopActionTypes.FETCH_SHOP_CARTS:
 			return {...state, loading: true, error: null};

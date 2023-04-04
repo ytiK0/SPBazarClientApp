@@ -1,6 +1,6 @@
-import {ShulkerAction, ShulkerActionTypes, ShulkerReducerState} from "./shulkerReduserTypes";
+import {ShulkerAction, ShulkerActionTypes, IShulkerReducerState} from "./shulkerReduserTypes";
 
-const initialState: ShulkerReducerState = {
+const initialState: IShulkerReducerState = {
 	activeCellId: -1,
 	activeCountSpinnerId: -1,
 	countSpinnerStep: 1,
@@ -10,7 +10,7 @@ const initialState: ShulkerReducerState = {
 	price: 0
 }
 
-export const shulkerReducer = (state = initialState, action: ShulkerAction): ShulkerReducerState => {
+export const shulkerReducer = (state = initialState, action: ShulkerAction): IShulkerReducerState => {
 	switch (action.type){
 		case ShulkerActionTypes.FETCH_SHULKER:
 			return {...state, cells: action.payload};

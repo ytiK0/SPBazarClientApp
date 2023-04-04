@@ -30,14 +30,3 @@
     border: none;
     background-color: #C6C6C6;
 }
-
-.buttonContainer {
-    display: flex;
-    gap: 5px;
-}
-
-.button {
-    color: #000000;
-    margin-top: 15px;
-    padding: 10px;
-}

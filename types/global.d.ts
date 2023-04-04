@@ -5,5 +5,6 @@ namespace NodeJS {
 		SPBAZAR_API_BASE_URL: string;
 		DISCORD_API_BASE_URL: string;
 		DISCORD_AVATARS_URL: string;
+		AVAILABLE_CATEGORIES: string;
 	}
 }

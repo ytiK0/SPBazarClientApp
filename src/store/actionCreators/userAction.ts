@@ -2,6 +2,8 @@ import {Dispatch} from "react";
 import {UserAction, UserActionsTypes} from "../reducers/userReducer/userReducerTypes";
 
 import {UserAPI} from "../../api/userAPI";
+import {toast} from "react-toastify";
+
 
 export const loginUser = () => {
 	return async (dispatch: Dispatch<UserAction>) => {
@@ -14,5 +16,11 @@ export const loginUser = () => {
 				shulkers: userShulkers
 			}
 		});
+	}
+}
+
+export const logoutUser = () => {
+	return async (dispatch: Dispatch<UserAction>) => {
+		dispatch({type: UserActionsTypes.LOGOUT})
 	}
 }

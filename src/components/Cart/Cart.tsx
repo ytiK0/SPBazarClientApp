@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styles from './cart.css';
 import {useNavigate} from "react-router-dom";
 
-export type ShulkerCartProps = {
+export interface IShulkerCartProps {
 	shulkerId: number,
 	sellerNick: string
 	title: string,
@@ -11,7 +11,7 @@ export type ShulkerCartProps = {
 	price: number
 }
 
-export const Cart: FC<ShulkerCartProps> = ({shulkerId, title, price,
+export const Cart: FC<IShulkerCartProps> = ({shulkerId, title, price,
 	                                    description, sellerNick}) => {
 	const navigate = useNavigate()
 

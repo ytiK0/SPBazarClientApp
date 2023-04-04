@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import styles from './shulkercellview.css';
-import {ShulkerCellProps} from "../../store/reducers/shulkerReduser/shulkerReduserTypes";
+import {IShulkerCellProps} from "../../store/reducers/shulkerReduser/shulkerReduserTypes";
 
-export const ShulkerCellView: FC<ShulkerCellProps> = ({itemIconName, count, isEmpty}) => {
+export const ShulkerCellView: FC<IShulkerCellProps> = ({itemIconName, count, isEmpty}) => {
 
 	if (isEmpty){
 		return (

@@ -1,12 +1,28 @@
-export interface ShulkerCellProps {
+interface IEnchantableItem {
+
+}
+
+interface ICell {
 	shulkerIndex: number,
-	count: number | null,
+	count: number,
 	itemIconName: string,
 	isEmpty: boolean,
 }
 
-export interface ShulkerReducerState {
-	cells: ShulkerCellProps[],
+interface IEmptyCell {
+	shulkerIndex: number,
+	itemIconName: string,
+	isEmpty: boolean,
+}
+
+interface IEnchantableCell extends IEmptyCell{
+	itemType: string
+}
+
+export type IShulkerCellProps =ICell | IEmptyCell | IEnchantableCell
+
+export interface IShulkerReducerState {
+	cells: IShulkerCellProps[],
 	activeCellId: number,
 	activeCountSpinnerId: number,
 	countSpinnerStep: number,
@@ -29,61 +45,61 @@ export enum ShulkerActionTypes {
 	CLEAR_SHULKER_INFO = "CLEAR_SHULKER_INFO"
 }
 
-interface FetchShulkerActionType {
+interface IFetchShulkerActionType {
 	type: ShulkerActionTypes.FETCH_SHULKER,
-	payload: ShulkerCellProps[]
+	payload: IShulkerCellProps[]
 }
 
-interface SetActiveCellActionType {
+interface ISetActiveCellActionType {
 	type: ShulkerActionTypes.SET_ACTIVE_CELL,
 	payload: number
 }
 
-interface DeactivateActiveCellActionType {
+interface IDeactivateActiveCellActionType {
 	type: ShulkerActionTypes.DEACTIVATE_ACTIVE_CELL
 }
 
-interface SetActiveCountSpinnerIdActionType {
+interface ISetActiveCountSpinnerIdActionType {
 	type: ShulkerActionTypes.SET_ACTIVE_COUNT_SPINNER_ID,
 	payload: number
 }
 
-interface ResetActiveCountSpinnerIdActionType {
+interface IResetActiveCountSpinnerIdActionType {
 	type: ShulkerActionTypes.REMOVE_ACTIVE_COUNT_SPINNER_ID
 }
 
-interface SetCountSpinnerStepActionType {
+interface ISetCountSpinnerStepActionType {
 	type: ShulkerActionTypes.SET_COUNT_SPINNER_STEP,
 	payload: number
 }
 
-interface SetTitleActionType {
+interface ISetTitleActionType {
 	type: ShulkerActionTypes.SET_TITLE,
 	payload: string
 }
 
-interface SetDescriptionActionType {
+interface ISetDescriptionActionType {
 	type: ShulkerActionTypes.SET_DESCRIPTION,
 	payload: string
 }
 
-interface SetPriceActionType {
+interface ISetPriceActionType {
 	type: ShulkerActionTypes.SET_PRICE,
 	payload: number
 }
 
-interface UpdateCellsActionType {
+interface IUpdateCellsActionType {
 	type: ShulkerActionTypes.UPDATE_CELL,
-	payload: ShulkerCellProps[]
+	payload: IShulkerCellProps[]
 }
 
-interface ClearShulkerInfo {
+interface IClearShulkerInfo {
 	type: ShulkerActionTypes.CLEAR_SHULKER_INFO,
 }
 
-export type ShulkerAction = FetchShulkerActionType | SetActiveCellActionType
-		| DeactivateActiveCellActionType | SetActiveCountSpinnerIdActionType
-		| ResetActiveCountSpinnerIdActionType | SetTitleActionType
-		| SetDescriptionActionType | SetPriceActionType
-		| UpdateCellsActionType | SetCountSpinnerStepActionType
-		| ClearShulkerInfo;
+export type ShulkerAction = IFetchShulkerActionType | ISetActiveCellActionType
+		| IDeactivateActiveCellActionType | ISetActiveCountSpinnerIdActionType
+		| IResetActiveCountSpinnerIdActionType | ISetTitleActionType
+		| ISetDescriptionActionType | ISetPriceActionType
+		| IUpdateCellsActionType | ISetCountSpinnerStepActionType
+		| IClearShulkerInfo;

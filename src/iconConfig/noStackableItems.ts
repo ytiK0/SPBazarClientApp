@@ -30,7 +30,8 @@ const NoStackableItems = [
 	"Shears",
 	"Spyglass",
 	"Totem_of_Undying",
-	"Trident"
+	"Trident",
+	"Bed"
 ];
 
 export const IsNoStackableItem = (itemName: string): boolean => {

@@ -1,5 +1,5 @@
 import {Dispatch} from "react";
-import {ShopAction, ShopActionTypes, Shulker} from "../reducers/shopReducer/shopReducerTypes";
+import {ShopAction, ShopActionTypes, IShulker} from "../reducers/shopReducer/shopReducerTypes";
 import {ShulkerAPI} from "../../api/shulkerAPI";
 import {UserAPI} from "../../api/userAPI";
 
@@ -23,7 +23,7 @@ export const getShulkerById = (id: number) => {
 			dispatch({ type: ShopActionTypes.GET_SHULKER });
 			const shulkerView = await ShulkerAPI.getShulkerById(id);
 			const shulkerSeller = await UserAPI.getUserById(shulkerView.userId);
-			const shulker: Shulker = {shulkerView, shulkerSeller}
+			const shulker: IShulker = {shulkerView, shulkerSeller}
 			dispatch({type:ShopActionTypes.GET_SHULKER_SUCCESS, payload: shulker});
 		}
 		catch (e: any) {

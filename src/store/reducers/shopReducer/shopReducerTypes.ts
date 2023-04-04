@@ -1,23 +1,23 @@
-import {ShulkerCartProps} from "../../../components/Cart";
-import {ShulkerCellProps} from "../shulkerReduser/shulkerReduserTypes";
+import {IShulkerCartProps} from "../../../components/Cart";
+import {IShulkerCellProps} from "../shulkerReduser/shulkerReduserTypes";
 
-export interface ShulkerView extends ShulkerCartProps {
-	cells: ShulkerCellProps[]
+export interface IShulkerView extends IShulkerCartProps {
+	cells: IShulkerCellProps[]
 }
 
-export interface ShulkerSellerInfo {
+export interface IShulkerSellerInfo {
 	sellerNick: string,
 	avatarUrl: string
 }
 
-export interface Shulker {
-	shulkerView: ShulkerView,
-	shulkerSeller: ShulkerSellerInfo,
+export interface IShulker {
+	shulkerView: IShulkerView,
+	shulkerSeller: IShulkerSellerInfo,
 }
 
-export interface ShopState {
-	shulker: Shulker | null,
-	carts: ShulkerCartProps[],
+export interface IShopState {
+	shulker: IShulker | null,
+	carts: IShulkerCartProps[],
 	loading: boolean,
 	error: string | null
 }
@@ -33,41 +33,41 @@ export enum ShopActionTypes {
 	BUY_SHULKER_ERROR="BUY_SHULKER_ERROR"
 }
 
-interface FetchShopCartsAction {
+interface IFetchShopCartsAction {
 	type: ShopActionTypes.FETCH_SHOP_CARTS;
 }
-interface FetchShopCartsSuccessAction {
+interface IFetchShopCartsSuccessAction {
 	type: ShopActionTypes.FETCH_SHOP_CARTS_SUCCESS;
-	payload: ShulkerCartProps[];
+	payload: IShulkerCartProps[];
 }
-interface FetchShopCartsErrorAction {
+interface IFetchShopCartsErrorAction {
 	type: ShopActionTypes.GET_SHULKER_ERROR;
 	payload: string;
 }
 
-interface GetCartAction {
+interface IGetCartAction {
 	type: ShopActionTypes.GET_SHULKER
 }
 
-interface GetCartSuccessAction {
+interface IGetCartSuccessAction {
 	type: ShopActionTypes.GET_SHULKER_SUCCESS
-	payload: Shulker
+	payload: IShulker
 }
 
-interface GetCartErrorAction {
+interface IGetCartErrorAction {
 	type: ShopActionTypes.GET_CART_ERROR,
 	payload: string
 }
 
-interface BuyShulker {
+interface IBuyShulker {
 	type: ShopActionTypes.BUY_SHULKER_SUCCESS,
 }
 
-interface BuyShulkerError {
+interface IBuyShulkerError {
 	type: ShopActionTypes.BUY_SHULKER_ERROR,
 	payload: string
 }
 
-export type ShopAction = FetchShopCartsAction | FetchShopCartsSuccessAction | FetchShopCartsErrorAction
-	| GetCartAction | GetCartSuccessAction | GetCartErrorAction
-	| BuyShulker | BuyShulkerError;
+export type ShopAction = IFetchShopCartsAction | IFetchShopCartsSuccessAction | IFetchShopCartsErrorAction
+	| IGetCartAction | IGetCartSuccessAction | IGetCartErrorAction
+	| IBuyShulker | IBuyShulkerError;

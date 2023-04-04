@@ -1,18 +1,18 @@
-import {ShulkerCartProps} from "../../../components/Cart";
+import {IShulkerCartProps} from "../../../components/Cart";
 
-export interface User {
+export interface IUser {
 	userName: string,
 	discordId: string,
 	avatarUrl: string,
 	userId: string,
-	shulkers: ShulkerCartProps[],
+	shulkers: IShulkerCartProps[],
 	soldShulkersCount: number,
 	purchasedShulkersCount: number
 }
 
-export interface UserState {
+export interface IUserState {
 	isAuth: boolean,
-	user: User | null
+	user: IUser | null
 }
 
 export enum UserActionsTypes {
@@ -20,13 +20,13 @@ export enum UserActionsTypes {
 	LOGOUT = "LOGOUT"
 }
 
-interface LoginAction {
+interface ILoginAction {
 	type: UserActionsTypes.LOGIN
-	payload: User
+	payload: IUser
 }
 
-interface LogoutAction {
+interface ILogoutAction {
 	type: UserActionsTypes.LOGOUT
 }
 
-export type UserAction = LoginAction | LogoutAction
+export type UserAction = ILoginAction | ILogoutAction

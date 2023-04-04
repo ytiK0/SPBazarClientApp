@@ -7,4 +7,11 @@
 .shulkerBuild {
     display: flex;
     margin-bottom: 30px;
+    align-items: center;
+}
+
+.middleController {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }

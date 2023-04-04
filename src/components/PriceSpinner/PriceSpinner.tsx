@@ -33,7 +33,7 @@ export const PriceSpinner: FC = () => {
 
 	return (
 		<div className={styles.priceSpinnerContainer}>
-			<span style={{fontSize: 40}}>Цена:</span>
+			<h2 className={"heading2"} >Цена:</h2>
 			<div className={styles.spinnerDisplayContainer}>
 				<input onChange={handleChange}
 				       className={styles.price}

@@ -10,9 +10,10 @@ import {useNavigate} from "react-router-dom";
 import {Button} from "../../ui/Button";
 import {toast} from "react-toastify";
 import {IsShulkerValid} from "../../utils/isShulkerValid";
-import {ShulkerView} from "../../store/reducers/shopReducer/shopReducerTypes";
+import {IShulkerView} from "../../store/reducers/shopReducer/shopReducerTypes";
 import {useAction} from "../../hooks/useAction";
 import {ShulkerAPI} from "../../api/shulkerAPI";
+import {ShulkerCategoriesSelect} from "../../ui/ShulkerCategorySelect";
 
 const ShulkerBuildPage = () => {
 	const {cells, title, price, description} = useTypedSelector(state => state.shulker)
@@ -21,7 +22,7 @@ const ShulkerBuildPage = () => {
 		event.preventDefault();
 
 		if (user != null) {
-			const sendingShulker: ShulkerView = {
+			const sendingShulker: IShulkerView = {
 				shulkerId: 0,
 				cells: cells,
 				title,
@@ -56,7 +57,10 @@ const ShulkerBuildPage = () => {
 				</div>
 				<div className={styles.shulkerInfo}>
 					<ShulkerDescription label={"Описание ящика"}/>
-					<PriceSpinner/>
+					<div className={styles.middleController}>
+						<PriceSpinner/>
+						<ShulkerCategoriesSelect />
+					</div>
 					<Button onClick={send} buttonText={"Send"}/>
 				</div>
 			</div>

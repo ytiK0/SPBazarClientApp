@@ -1,6 +1,6 @@
-import {UserAction, UserActionsTypes, UserState} from "./userReducerTypes";
+import {UserAction, UserActionsTypes, IUserState} from "./userReducerTypes";
 
-const initialState: UserState = {
+const initialState: IUserState = {
 	isAuth: false,
 	user:  null
 }

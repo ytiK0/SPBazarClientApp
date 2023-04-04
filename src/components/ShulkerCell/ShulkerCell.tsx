@@ -14,8 +14,10 @@ export const ShulkerCell: FC<{shulkerIndex: number}> = ({shulkerIndex}) => {
 	const fillCell = () => {
 		const mutableCell = cells[shulkerIndex];
 		if (IsNoStackableItem(cellData.itemIconName))
-			cells[shulkerIndex] = {...mutableCell, count: null , isEmpty: false};
-		else cells[shulkerIndex] = {...mutableCell, isEmpty: false}
+			cells[shulkerIndex] = {...mutableCell , isEmpty: false};
+		else cells[shulkerIndex] = {...mutableCell, isEmpty: false};
+
+		setActiveCell(shulkerIndex);
 
 		updateCells(cells);
 	}

@@ -5,6 +5,8 @@ import {UserStatistic} from "../../components/UserStatistic";
 import {UserShulkers} from "../../modules/UserShulkers";
 import {useNavigate} from "react-router-dom";
 
+
+// TODO if user did not login render empty page
 export function UserPage() {
 	const nav = useNavigate()
 	return (

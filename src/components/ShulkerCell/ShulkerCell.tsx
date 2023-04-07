@@ -7,28 +7,27 @@ import {IsNoStackableItem} from "../../iconConfig/noStackableItems";
 
 
 export const ShulkerCell: FC<{shulkerIndex: number}> = ({shulkerIndex}) => {
-	const {cells, activeCellId, activeCountSpinnerId} = useTypedSelector(state => state.shulker);
-	const {updateCells, setActiveCell, setActiveCountSpinnerId, removeActiveCountSpinnerId} = useAction();
-	const cellData = cells[shulkerIndex];
+	const {cells, activeCountSpinnerId} = useTypedSelector(state => state.shulker);
+	const {updateCells, setActiveCountSpinnerId, removeActiveCountSpinnerId} = useAction();
+	const thisCellData = cells[shulkerIndex];
 
 	const fillCell = () => {
 		const mutableCell = cells[shulkerIndex];
-		if (IsNoStackableItem(cellData.itemIconName))
-			cells[shulkerIndex] = {...mutableCell , isEmpty: false};
-		else cells[shulkerIndex] = {...mutableCell, isEmpty: false};
-
-		setActiveCell(shulkerIndex);
+		// if (IsNoStackableItem(thisCellData.itemIconName))
+			mutableCell.isEmpty = false
+		// else cells[shulkerIndex] = {...mutableCell, isEmpty: false};
+		console.log(mutableCell, cells[shulkerIndex])
 
 		updateCells(cells);
 	}
 
-	const setActive = (event: React.MouseEvent<HTMLImageElement>) => {
-		const id = parseInt((event.target as HTMLImageElement).id);
-		if (activeCellId != id)
-			setActiveCell(id);
-		else
-			setActiveCell(-1);
-	}
+	// const setActive = (event: React.MouseEvent<HTMLImageElement>) => {
+	// 	const id = parseInt((event.target as HTMLImageElement).id);
+	// 	if (activeCellId != id)
+	// 		setActiveCell(id);
+	// 	else
+	// 		setActiveCell(-1);
+	// }
 
 	const enableCountSpinner = () => {
 		if (shulkerIndex == activeCountSpinnerId)
@@ -41,27 +40,27 @@ export const ShulkerCell: FC<{shulkerIndex: number}> = ({shulkerIndex}) => {
 
 	}, [])
 
-	if (cellData.isEmpty) {
+	if (thisCellData.isEmpty) {
 		return (
 			<div onClick={fillCell}
 			     className={`${styles.shulkerGridItem} ${styles.empty}`}
-			     id={`${cellData.shulkerIndex}`}></div>
+			     id={`${thisCellData.shulkerIndex}`}></div>
 		)
 	}
 
 	return (
-		<div className={`${styles.shulkerGridItem} ${activeCellId == shulkerIndex ? styles.selected : ""}`}>
-			<img onClick={setActive}
+		<div className={`${styles.shulkerGridItem}`}>
+			<img
 			     className={styles.shulkerCellItem}
-			     src={"img/" + cellData.itemIconName}
+			     src={"img/" + thisCellData.itemIconName}
 			     alt="icon"
 			     id={`${shulkerIndex}`}
 				 loading={"lazy"}/>
-			{IsNoStackableItem(cellData.itemIconName) ? <></> :
+			{IsNoStackableItem(thisCellData.itemIconName) ? <></> :
 				<>
 					<span onClick={enableCountSpinner}
 					      className={styles.shulkerGridItemCount}>
-						{cellData.count ? cellData.count : 0}
+						{thisCellData.count ? thisCellData.count : 0}
 					</span>
 					<CountSpinner linkedCellId={shulkerIndex}/>
 				</> }

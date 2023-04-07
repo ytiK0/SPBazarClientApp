@@ -5,7 +5,7 @@ import {IShulkerButton, ShulkerButton} from "../../ui/ShulkerButton";
 export const ShulkerButtons: FC<{buttons: IShulkerButton[]}> = ({buttons}) => {
 	return (
 		<div className={styles.buttonContainer}>
-			{buttons.map(button => <ShulkerButton {...button} />)}
+			{buttons.map(button => <ShulkerButton {...button} key={button.buttonText} />)}
 		</div>
 	);
 }

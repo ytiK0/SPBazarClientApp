@@ -1,15 +1,15 @@
 import {Dispatch} from "react";
 import {ShulkerAction, ShulkerActionTypes, IShulkerCellProps} from "../reducers/shulkerReduser/shulkerReduserTypes";
 
-export const setActiveCell = (cellId: number) => {
+export const setActiveIconName = (iconName: string) => {
 	return async (dispatch: Dispatch<ShulkerAction>) => {
-		dispatch({type:ShulkerActionTypes.SET_ACTIVE_CELL, payload: cellId});
+		dispatch({type:ShulkerActionTypes.SET_ACTIVE_ICON_NAME, payload: iconName});
 	}
 }
 
-export const deactivateActiveCell = () => {
+export const deactivateActiveIconName = () => {
 	return async (dispatch: Dispatch<ShulkerAction>) => {
-		dispatch({type:ShulkerActionTypes.DEACTIVATE_ACTIVE_CELL});
+		dispatch({type:ShulkerActionTypes.DEACTIVATE_ACTIVE_ICON_NAME});
 	}
 }
 

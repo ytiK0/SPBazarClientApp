@@ -1,7 +1,7 @@
 import {ShulkerAction, ShulkerActionTypes, IShulkerReducerState} from "./shulkerReduserTypes";
 
 const initialState: IShulkerReducerState = {
-	activeCellId: -1,
+	activeIconName: null,
 	activeCountSpinnerId: -1,
 	countSpinnerStep: 1,
 	cells: [],
@@ -18,10 +18,10 @@ export const shulkerReducer = (state = initialState, action: ShulkerAction): ISh
 		case ShulkerActionTypes.UPDATE_CELL:
 			return {...state, cells: action.payload}
 
-		case ShulkerActionTypes.SET_ACTIVE_CELL:
-			return {...state, activeCellId: action.payload};
-		case ShulkerActionTypes.DEACTIVATE_ACTIVE_CELL:
-			return {...state, activeCellId: -1};
+		case ShulkerActionTypes.SET_ACTIVE_ICON_NAME:
+			return {...state, activeIconName: action.payload};
+		case ShulkerActionTypes.DEACTIVATE_ACTIVE_ICON_NAME:
+			return {...state, activeIconName: null};
 
 		case ShulkerActionTypes.SET_ACTIVE_COUNT_SPINNER_ID:
 			return {...state, activeCountSpinnerId: action.payload};

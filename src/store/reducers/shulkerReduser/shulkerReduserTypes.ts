@@ -1,29 +1,23 @@
-interface IEnchantableItem {
-
-}
+// interface IEnchantableItem {
+//
+// }
 
 interface ICell {
 	shulkerIndex: number,
-	count: number,
+	count: number | null,
 	itemIconName: string,
 	isEmpty: boolean,
 }
 
-interface IEmptyCell {
-	shulkerIndex: number,
-	itemIconName: string,
-	isEmpty: boolean,
-}
-
-interface IEnchantableCell extends IEmptyCell{
+interface IEnchantableCell extends ICell{
 	itemType: string
 }
 
-export type IShulkerCellProps =ICell | IEmptyCell | IEnchantableCell
+export type IShulkerCellProps =ICell | IEnchantableCell
 
 export interface IShulkerReducerState {
 	cells: IShulkerCellProps[],
-	activeCellId: number,
+	activeIconName: string | null,
 	activeCountSpinnerId: number,
 	countSpinnerStep: number,
 	title: string,
@@ -33,8 +27,8 @@ export interface IShulkerReducerState {
 
 export enum ShulkerActionTypes {
 	FETCH_SHULKER = "FETCH_SHULKER",
-	SET_ACTIVE_CELL = "SET_ACTIVE_CELL",
-	DEACTIVATE_ACTIVE_CELL = "DEACTIVATE_ACTIVE_CELL",
+	SET_ACTIVE_ICON_NAME = "SET_ACTIVE_ICON_NAME",
+	DEACTIVATE_ACTIVE_ICON_NAME = "DEACTIVATE_ACTIVE_ICON_NAME",
 	SET_ACTIVE_COUNT_SPINNER_ID = "SET_ACTIVE_COUNT_SPINNER_ID",
 	REMOVE_ACTIVE_COUNT_SPINNER_ID = "REMOVE_ACTIVE_COUNT_SPINNER_ID",
 	SET_COUNT_SPINNER_STEP = "SET_COUNT_SPINNER_STEP",
@@ -51,12 +45,12 @@ interface IFetchShulkerActionType {
 }
 
 interface ISetActiveCellActionType {
-	type: ShulkerActionTypes.SET_ACTIVE_CELL,
-	payload: number
+	type: ShulkerActionTypes.SET_ACTIVE_ICON_NAME,
+	payload: string
 }
 
 interface IDeactivateActiveCellActionType {
-	type: ShulkerActionTypes.DEACTIVATE_ACTIVE_CELL
+	type: ShulkerActionTypes.DEACTIVATE_ACTIVE_ICON_NAME
 }
 
 interface ISetActiveCountSpinnerIdActionType {

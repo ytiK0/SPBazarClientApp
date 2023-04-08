@@ -52,7 +52,7 @@ const ShulkerBuildPage = () => {
 			<Header/>
 			<div className={`container`}>
 				<div className={styles.shulkerBuild}>
-					<ShulkerBuild/>
+					<ShulkerBuild />
 					<SelectItemWindow/>
 				</div>
 				<div className={styles.shulkerInfo}>

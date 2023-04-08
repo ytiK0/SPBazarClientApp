@@ -1,9 +1,11 @@
-import {ShulkerAction, ShulkerActionTypes, IShulkerReducerState} from "./shulkerReduserTypes";
+import {IShulkerReducerState, ShulkerAction, ShulkerActionTypes} from "./shulkerReduserTypes";
+import {EditingModes} from "../../../components/ShulkerCell";
 
 const initialState: IShulkerReducerState = {
-	activeIconName: null,
+	activeIcon: null,
 	activeCountSpinnerId: -1,
 	countSpinnerStep: 1,
+	editingMode: EditingModes.DEFAULT,
 	cells: [],
 	title: "",
 	description: "",
@@ -18,10 +20,10 @@ export const shulkerReducer = (state = initialState, action: ShulkerAction): ISh
 		case ShulkerActionTypes.UPDATE_CELL:
 			return {...state, cells: action.payload}
 
-		case ShulkerActionTypes.SET_ACTIVE_ICON_NAME:
-			return {...state, activeIconName: action.payload};
+		case ShulkerActionTypes.SET_ACTIVE_ICON:
+			return {...state, activeIcon: action.payload};
 		case ShulkerActionTypes.DEACTIVATE_ACTIVE_ICON_NAME:
-			return {...state, activeIconName: null};
+			return {...state, activeIcon: null};
 
 		case ShulkerActionTypes.SET_ACTIVE_COUNT_SPINNER_ID:
 			return {...state, activeCountSpinnerId: action.payload};
@@ -29,6 +31,11 @@ export const shulkerReducer = (state = initialState, action: ShulkerAction): ISh
 			return {...state, activeCountSpinnerId: -1};
 		case ShulkerActionTypes.SET_COUNT_SPINNER_STEP:
 			return {...state, countSpinnerStep: action.payload}
+
+		case ShulkerActionTypes.SET_EDITING_MODE:
+			return {...state, editingMode: action.payload}
+		case ShulkerActionTypes.SET_DEFAULT_EDITING_MODE:
+			return {...state, editingMode: EditingModes.DEFAULT}
 
 		case ShulkerActionTypes.SET_TITLE:
 			return {...state, title: action.payload};

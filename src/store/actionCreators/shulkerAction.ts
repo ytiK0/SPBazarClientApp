@@ -1,9 +1,15 @@
 import {Dispatch} from "react";
-import {ShulkerAction, ShulkerActionTypes, IShulkerCellProps} from "../reducers/shulkerReduser/shulkerReduserTypes";
+import {
+	ShulkerAction,
+	ShulkerActionTypes,
+	IShulkerCellProps
+} from "../reducers/shulkerReduser/shulkerReduserTypes";
+import {IIcon} from "../../utils/iconRefs";
+import {EditingModes} from "../../components/ShulkerCell";
 
-export const setActiveIconName = (iconName: string) => {
+export const setActiveIconName = (icon: IIcon) => {
 	return async (dispatch: Dispatch<ShulkerAction>) => {
-		dispatch({type:ShulkerActionTypes.SET_ACTIVE_ICON_NAME, payload: iconName});
+		dispatch({type:ShulkerActionTypes.SET_ACTIVE_ICON, payload: icon});
 	}
 }
 
@@ -59,5 +65,14 @@ export const clearShulkerInfo = () => {
 	}
 }
 
+export const setEditingMode = (mode: EditingModes) => {
+	return async (dispatch: Dispatch<ShulkerAction>) => {
+		dispatch({type:ShulkerActionTypes.SET_EDITING_MODE, payload: mode});
+	}
 
-
+}
+export const setDefaultEditingMode = () => {
+	return async (dispatch: Dispatch<ShulkerAction>) => {
+		dispatch({type:ShulkerActionTypes.SET_DEFAULT_EDITING_MODE});
+	}
+}

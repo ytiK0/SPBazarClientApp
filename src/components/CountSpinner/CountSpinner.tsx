@@ -9,17 +9,22 @@ export const CountSpinner: FC<{linkedCellId: number}> = ({linkedCellId}) => {
 
 	const upCount = () => {
 		const mutableCell = cells[linkedCellId];
-		if (mutableCell.count && mutableCell.count + countSpinnerStep < 64)
-			cells[linkedCellId] = {...mutableCell, count: mutableCell.count + countSpinnerStep};
-		else cells[linkedCellId] = {...mutableCell, count: 64}
+		console.log(mutableCell);
+		if (mutableCell.count != null && mutableCell.count + countSpinnerStep < 64)
+			mutableCell.count = mutableCell.count + countSpinnerStep;
+		else mutableCell.count = 64;
+
+		console.log(mutableCell);
+
 		updateCells(cells);
 	}
 
 	const downCount = () => {
 		const mutableCell = cells[linkedCellId];
 		if (mutableCell.count && mutableCell.count - countSpinnerStep > 0)
-			cells[linkedCellId] = {...mutableCell, count: mutableCell.count - countSpinnerStep};
-		else cells[linkedCellId] = {...mutableCell, count: 1}
+			mutableCell.count = mutableCell.count - countSpinnerStep;
+		else mutableCell.count = 1;
+
 		updateCells(cells);
 	}
 

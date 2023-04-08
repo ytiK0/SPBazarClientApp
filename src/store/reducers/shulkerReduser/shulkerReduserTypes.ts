@@ -1,6 +1,5 @@
-// interface IEnchantableItem {
-//
-// }
+import {IIcon} from "../../../utils/iconRefs";
+import {EditingModes} from "../../../components/ShulkerCell";
 
 interface ICell {
 	shulkerIndex: number,
@@ -13,12 +12,15 @@ interface IEnchantableCell extends ICell{
 	itemType: string
 }
 
-export type IShulkerCellProps =ICell | IEnchantableCell
+export type IShulkerCellProps = ICell | IEnchantableCell
+
+
 
 export interface IShulkerReducerState {
 	cells: IShulkerCellProps[],
-	activeIconName: string | null,
+	activeIcon: IIcon | null,
 	activeCountSpinnerId: number,
+	editingMode: EditingModes
 	countSpinnerStep: number,
 	title: string,
 	description: string,
@@ -27,7 +29,7 @@ export interface IShulkerReducerState {
 
 export enum ShulkerActionTypes {
 	FETCH_SHULKER = "FETCH_SHULKER",
-	SET_ACTIVE_ICON_NAME = "SET_ACTIVE_ICON_NAME",
+	SET_ACTIVE_ICON = "SET_ACTIVE_ICON",
 	DEACTIVATE_ACTIVE_ICON_NAME = "DEACTIVATE_ACTIVE_ICON_NAME",
 	SET_ACTIVE_COUNT_SPINNER_ID = "SET_ACTIVE_COUNT_SPINNER_ID",
 	REMOVE_ACTIVE_COUNT_SPINNER_ID = "REMOVE_ACTIVE_COUNT_SPINNER_ID",
@@ -36,64 +38,76 @@ export enum ShulkerActionTypes {
 	SET_DESCRIPTION = "SET_DESCRIPTION",
 	SET_PRICE = "SET_PRICE",
 	UPDATE_CELL = "UPDATE_CELL",
-	CLEAR_SHULKER_INFO = "CLEAR_SHULKER_INFO"
+	CLEAR_SHULKER_INFO = "CLEAR_SHULKER_INFO",
+	SET_EDITING_MODE = "SET_EDITING_MODE",
+	SET_DEFAULT_EDITING_MODE = "SET_DEFAULT_EDITING_MODE"
 }
 
-interface IFetchShulkerActionType {
+interface IFetchShulkerAction {
 	type: ShulkerActionTypes.FETCH_SHULKER,
 	payload: IShulkerCellProps[]
 }
 
-interface ISetActiveCellActionType {
-	type: ShulkerActionTypes.SET_ACTIVE_ICON_NAME,
-	payload: string
+interface ISetActiveCellAction {
+	type: ShulkerActionTypes.SET_ACTIVE_ICON,
+	payload: IIcon
 }
 
-interface IDeactivateActiveCellActionType {
+interface IDeactivateActiveCellAction {
 	type: ShulkerActionTypes.DEACTIVATE_ACTIVE_ICON_NAME
 }
 
-interface ISetActiveCountSpinnerIdActionType {
+interface ISetActiveCountSpinnerIdAction {
 	type: ShulkerActionTypes.SET_ACTIVE_COUNT_SPINNER_ID,
 	payload: number
 }
 
-interface IResetActiveCountSpinnerIdActionType {
+interface IResetActiveCountSpinnerIdAction {
 	type: ShulkerActionTypes.REMOVE_ACTIVE_COUNT_SPINNER_ID
 }
 
-interface ISetCountSpinnerStepActionType {
+interface ISetCountSpinnerStepAction {
 	type: ShulkerActionTypes.SET_COUNT_SPINNER_STEP,
 	payload: number
 }
 
-interface ISetTitleActionType {
+interface ISetTitleAction {
 	type: ShulkerActionTypes.SET_TITLE,
 	payload: string
 }
 
-interface ISetDescriptionActionType {
+interface ISetDescriptionAction {
 	type: ShulkerActionTypes.SET_DESCRIPTION,
 	payload: string
 }
 
-interface ISetPriceActionType {
+interface ISetPriceAction {
 	type: ShulkerActionTypes.SET_PRICE,
 	payload: number
 }
 
-interface IUpdateCellsActionType {
+interface IUpdateCellsAction {
 	type: ShulkerActionTypes.UPDATE_CELL,
 	payload: IShulkerCellProps[]
 }
 
-interface IClearShulkerInfo {
+interface IClearShulkerInfoAction {
 	type: ShulkerActionTypes.CLEAR_SHULKER_INFO,
 }
 
-export type ShulkerAction = IFetchShulkerActionType | ISetActiveCellActionType
-		| IDeactivateActiveCellActionType | ISetActiveCountSpinnerIdActionType
-		| IResetActiveCountSpinnerIdActionType | ISetTitleActionType
-		| ISetDescriptionActionType | ISetPriceActionType
-		| IUpdateCellsActionType | ISetCountSpinnerStepActionType
-		| IClearShulkerInfo;
+interface ISetEditingModeAction {
+	type: ShulkerActionTypes.SET_EDITING_MODE,
+	payload: EditingModes
+}
+
+interface ISetDefaultEditingMode {
+	type: ShulkerActionTypes.SET_DEFAULT_EDITING_MODE
+}
+
+export type ShulkerAction = IFetchShulkerAction   | ISetActiveCellAction
+			| IDeactivateActiveCellAction         | ISetActiveCountSpinnerIdAction
+			| IResetActiveCountSpinnerIdAction    | ISetTitleAction
+			| ISetDescriptionAction               | ISetPriceAction
+			| IUpdateCellsAction                  | ISetCountSpinnerStepAction
+			| IClearShulkerInfoAction             | ISetEditingModeAction
+			| ISetDefaultEditingMode;

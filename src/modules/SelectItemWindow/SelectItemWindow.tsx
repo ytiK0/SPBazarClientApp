@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './selectitemwindow.css';
-import {icons} from "../../iconConfig/iconRefs";
+import {icons} from "../../utils/iconRefs";
 import {SelectItemCell} from "../../components/SelectItemCell";
 
 export function SelectItemWindow() {
@@ -8,7 +8,7 @@ export function SelectItemWindow() {
 		<div className={styles.littleShulkerContainer}>
 			<h2 className={styles.littleShulkerHeading}>Предметы</h2>
 			<div className={styles.itemContainer}>
-				{icons.map((icon, index) => <SelectItemCell iconName={icon} key={index} />)}
+				{icons.map((icon, index) => <SelectItemCell {...icon} key={index} />)}
 			</div>
 		</div>
 	);

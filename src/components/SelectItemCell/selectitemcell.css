@@ -4,3 +4,12 @@
     height: 72px;
     scroll-snap-align: start;
 }
+
+.item:hover {
+    background-color: #6AAD43;
+    outline: #FFFFFF solid 6px;
+}
+
+.selected {
+    background-color: #2FA0A0;
+}

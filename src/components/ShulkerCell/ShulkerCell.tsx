@@ -3,31 +3,78 @@ import styles from './shulkercell.css';
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {useAction} from "../../hooks/useAction";
 import {CountSpinner} from "../CountSpinner";
-import {IsNoStackableItem} from "../../iconConfig/noStackableItems";
+import {toast} from "react-toastify";
+import {EMPTY_CELL} from "../../modules/ShulkerBuild";
+import {IShulkerCellProps} from "../../store/reducers/shulkerReduser/shulkerReduserTypes";
 
+export enum EditingModes   {
+	DEFAULT = "DEFAULT",
+	CLEARING_CELL = "CLEARING_CELL",
+	LINE_CELL = "LINE_CELL",
+	FILL_ALL = "FILL_ALL"
+}
 
 export const ShulkerCell: FC<{shulkerIndex: number}> = ({shulkerIndex}) => {
-	const {cells, activeCountSpinnerId} = useTypedSelector(state => state.shulker);
-	const {updateCells, setActiveCountSpinnerId, removeActiveCountSpinnerId} = useAction();
+	const {cells, activeCountSpinnerId, activeIcon, editingMode} = useTypedSelector(state => state.shulker);
+	const {updateCells, setActiveCountSpinnerId, removeActiveCountSpinnerId, setDefaultEditingMode} = useAction();
 	const thisCellData = cells[shulkerIndex];
 
-	const fillCell = () => {
-		const mutableCell = cells[shulkerIndex];
-		// if (IsNoStackableItem(thisCellData.itemIconName))
-			mutableCell.isEmpty = false
-		// else cells[shulkerIndex] = {...mutableCell, isEmpty: false};
-		console.log(mutableCell, cells[shulkerIndex])
+	const cellOnClick = () => {
+		switch (editingMode) {
+			case EditingModes.CLEARING_CELL:
+				clearCell();
+				break;
+			case EditingModes.LINE_CELL:
+				fillLine();
+				break;
+			case EditingModes.FILL_ALL:
+				fillAll();
+				break;
+			default:
+				fillCell()
+		}
+	}
+
+	const clearCell = () => {
+		cells[shulkerIndex] = EMPTY_CELL(shulkerIndex);
 
 		updateCells(cells);
 	}
 
-	// const setActive = (event: React.MouseEvent<HTMLImageElement>) => {
-	// 	const id = parseInt((event.target as HTMLImageElement).id);
-	// 	if (activeCellId != id)
-	// 		setActiveCell(id);
-	// 	else
-	// 		setActiveCell(-1);
-	// }
+	const fillCell = () => {
+		const mutableCell = cells[shulkerIndex];
+		if (activeIcon && activeIcon.fullName != mutableCell.itemIconName) {
+			mutableCell.isEmpty = false;
+			mutableCell.itemIconName = activeIcon.fullName;
+			if (activeIcon.isStackable)
+				mutableCell.count = null
+			else mutableCell.count = 0;
+
+			updateCells(cells);
+		}
+		else toast.error("icon not selected")
+	}
+
+	const fillAll = () => {
+		updateCells(cells.map((item, index) => {
+			return {...thisCellData, shulkerIndex: index}}));
+		setDefaultEditingMode();
+	}
+
+	const fillLine = () => {
+		const rowId = Math.floor(shulkerIndex/9);
+
+		const chunks = [];
+		for (let i = 0; i < cells.length; i += 9)
+			chunks.push(cells.slice(i, i + 9));
+
+		chunks[rowId] = chunks[rowId].map((cell, index) => {
+			return {...thisCellData, shulkerIndex: rowId * 9 + index}
+		});
+
+		updateCells(new Array<IShulkerCellProps>().concat(...chunks))
+		setDefaultEditingMode();
+	}
 
 	const enableCountSpinner = () => {
 		if (shulkerIndex == activeCountSpinnerId)
@@ -50,13 +97,13 @@ export const ShulkerCell: FC<{shulkerIndex: number}> = ({shulkerIndex}) => {
 
 	return (
 		<div className={`${styles.shulkerGridItem}`}>
-			<img
+			<img onClick={cellOnClick}
 			     className={styles.shulkerCellItem}
 			     src={"img/" + thisCellData.itemIconName}
 			     alt="icon"
 			     id={`${shulkerIndex}`}
 				 loading={"lazy"}/>
-			{IsNoStackableItem(thisCellData.itemIconName) ? <></> :
+			{thisCellData.count == null ? <></> :
 				<>
 					<span onClick={enableCountSpinner}
 					      className={styles.shulkerGridItemCount}>

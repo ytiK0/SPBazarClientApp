@@ -4,6 +4,20 @@
     src: url("../fonts/minecraft-1-1.woff2") format("woff2");
 }
 
+:root {
+    --grey-9f: #9F9F9F;
+    --red: #D34242;
+    --yellow: #FFB833;
+    --light-green: #6DC752;
+    --dark-green: #417233;
+    --light-blue: #6699FF;
+    --dark-blue: #354F90;
+    --greened-blue: #00778F;
+    --black-24: #242424;
+    --black-1e: #1E1E1E;
+    --black-11: #111112;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -23,7 +37,7 @@ ul {
 
 body {
     min-width: 1920px;
-    background-color: #1E1E1E;
+    background-color: var(--black-1e);
 }
 
 .container {

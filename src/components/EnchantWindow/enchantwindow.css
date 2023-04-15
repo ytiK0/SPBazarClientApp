@@ -1,0 +1,30 @@
+.enchantWindowContainer {
+    position: relative;
+    width: 350px;
+    padding: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    background: #1B0C1B;
+    border: 4px solid #2C0863;
+    border-radius: 15px;
+}
+
+.heading {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 20px;
+
+    color: #FFB833;
+}
+
+.createEnchantmentButton {
+    background-color: transparent;
+    border: none;
+    font-size: 22px;
+    line-height: 22px;
+    color: var(--red);
+    cursor: pointer;
+}

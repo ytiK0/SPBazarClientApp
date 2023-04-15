@@ -1,15 +1,18 @@
 import {IShulkerReducerState, ShulkerAction, ShulkerActionTypes} from "./shulkerReduserTypes";
 import {EditingModes} from "../../../components/ShulkerCell";
+import {Enchantment} from "../../../utils/enchantments";
 
 const initialState: IShulkerReducerState = {
 	activeIcon: null,
+	iconEnchants: [],
 	activeCountSpinnerId: -1,
 	countSpinnerStep: 1,
 	editingMode: EditingModes.DEFAULT,
 	cells: [],
 	title: "",
 	description: "",
-	price: 0
+	price: 0,
+	category: null
 }
 
 export const shulkerReducer = (state = initialState, action: ShulkerAction): IShulkerReducerState => {
@@ -21,9 +24,19 @@ export const shulkerReducer = (state = initialState, action: ShulkerAction): ISh
 			return {...state, cells: action.payload}
 
 		case ShulkerActionTypes.SET_ACTIVE_ICON:
-			return {...state, activeIcon: action.payload};
+			return {...state, activeIcon: action.payload, iconEnchants: []};
 		case ShulkerActionTypes.DEACTIVATE_ACTIVE_ICON_NAME:
 			return {...state, activeIcon: null};
+
+		case ShulkerActionTypes.ADD_ENCHANTMENT:
+			return {...state, iconEnchants: [...state.iconEnchants, action.payload]}
+		case ShulkerActionTypes.REMOVE_ENCHANTMENT:
+			return {...state, iconEnchants: state.iconEnchants.map((enchantment) => {
+					if (enchantment != action.payload)
+						return enchantment;}) as Enchantment[]}
+		case ShulkerActionTypes.CLEAR_ENCHANTMENT:
+			return {...state, iconEnchants: []}
+
 
 		case ShulkerActionTypes.SET_ACTIVE_COUNT_SPINNER_ID:
 			return {...state, activeCountSpinnerId: action.payload};
@@ -33,7 +46,7 @@ export const shulkerReducer = (state = initialState, action: ShulkerAction): ISh
 			return {...state, countSpinnerStep: action.payload}
 
 		case ShulkerActionTypes.SET_EDITING_MODE:
-			return {...state, editingMode: action.payload}
+			return {...state, editingMode: action.payload, activeIcon: null }
 		case ShulkerActionTypes.SET_DEFAULT_EDITING_MODE:
 			return {...state, editingMode: EditingModes.DEFAULT}
 
@@ -48,6 +61,9 @@ export const shulkerReducer = (state = initialState, action: ShulkerAction): ISh
 
 		case ShulkerActionTypes.CLEAR_SHULKER_INFO:
 			return {...state, description: "", price: 0, title: ""}
+
+		case ShulkerActionTypes.SET_CATEGORY:
+			return {...state, category: action.payload}
 
 		default:
 			return state;

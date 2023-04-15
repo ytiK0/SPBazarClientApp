@@ -3,11 +3,14 @@ import {Header} from "../../components/Header";
 import {Categories} from "../../components/Categories";
 import styles from "./shop.css";
 import {ShopBody} from "../../modules/ShopBody";
+import {CategoriesOptions} from "../../ui/ShulkerCategorySelect";
 
-export const categoriesList = [{value: "blocks" , label: 'Блоки'},
+export const categoriesList: CategoriesOptions[] = [
+	{value: "blocks" , label: 'Блоки'},
 	{value: "armor" , label: 'Броня'},
 	{value: "food" , label: 'Еда'},
-	{value: "equipment" , label: 'Инструменты'}];
+	{value: "equipment" , label: 'Инструменты'}
+];
 
 const Shop = () => {
 	return (

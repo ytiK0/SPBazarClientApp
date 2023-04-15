@@ -14,6 +14,7 @@ import {IShulkerView} from "../../store/reducers/shopReducer/shopReducerTypes";
 import {useAction} from "../../hooks/useAction";
 import {ShulkerAPI} from "../../api/shulkerAPI";
 import {ShulkerCategoriesSelect} from "../../ui/ShulkerCategorySelect";
+import {EnchantWindow} from "../../components/EnchantWindow";
 
 const ShulkerBuildPage = () => {
 	const {cells, title, price, description} = useTypedSelector(state => state.shulker)
@@ -61,6 +62,7 @@ const ShulkerBuildPage = () => {
 						<PriceSpinner/>
 						<ShulkerCategoriesSelect />
 					</div>
+					<EnchantWindow />
 					<Button onClick={send} buttonText={"Send"}/>
 				</div>
 			</div>

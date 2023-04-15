@@ -11,5 +11,6 @@
 }
 
 .selected {
-    background-color: #2FA0A0;
+    background-color: #2FA0A0 !important;
+    outline: #FFFFFF solid 6px;
 }

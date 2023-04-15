@@ -6,6 +6,7 @@ import {
 } from "../reducers/shulkerReduser/shulkerReduserTypes";
 import {IIcon} from "../../utils/iconRefs";
 import {EditingModes} from "../../components/ShulkerCell";
+import {CategoriesOptions} from "../../ui/ShulkerCategorySelect";
 
 export const setActiveIconName = (icon: IIcon) => {
 	return async (dispatch: Dispatch<ShulkerAction>) => {
@@ -54,11 +55,13 @@ export const updateCells = (cells: IShulkerCellProps[]) => {
 		dispatch({type:ShulkerActionTypes.UPDATE_CELL, payload: cells});
 	}
 }
+
 export const setCountSpinnerStep = (stepValue: number) => {
 	return async (dispatch: Dispatch<ShulkerAction>) => {
 		dispatch({type:ShulkerActionTypes.SET_COUNT_SPINNER_STEP, payload: stepValue});
 	}
 }
+
 export const clearShulkerInfo = () => {
 	return async (dispatch: Dispatch<ShulkerAction>) => {
 		dispatch({type:ShulkerActionTypes.CLEAR_SHULKER_INFO});
@@ -71,8 +74,15 @@ export const setEditingMode = (mode: EditingModes) => {
 	}
 
 }
+
 export const setDefaultEditingMode = () => {
 	return async (dispatch: Dispatch<ShulkerAction>) => {
 		dispatch({type:ShulkerActionTypes.SET_DEFAULT_EDITING_MODE});
 	}
 }
+export const setCategory = (category: CategoriesOptions | null) => {
+	return async (dispatch: Dispatch<ShulkerAction>) => {
+		dispatch({type:ShulkerActionTypes.SET_CATEGORY, payload: category});
+	}
+}
+

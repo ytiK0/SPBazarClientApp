@@ -10,7 +10,7 @@
     user-select: none;
 }
 .shulkerGridItem:hover {
-    background-color: #6AAD43;
+    background-color: var(--light-green);
     outline: #FFFFFF solid 6px;
 }
 
@@ -25,7 +25,6 @@
 }
 
 .shulkerGridItemCount {
-
     position: absolute;
     display: block;
     right: -6px;

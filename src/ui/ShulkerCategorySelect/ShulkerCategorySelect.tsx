@@ -1,12 +1,21 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import makeAnimated from "react-select/animated";
 import {categoriesList} from "../../pages/Shop/Shop";
 import Select, {StylesConfig} from "react-select";
+import {Categories} from "../../components/Categories";
+import {useAction} from "../../hooks/useAction";
+
+export interface CategoriesOptions {
+	value: string,
+	label: string
+}
 
 export const ShulkerCategoriesSelect: FC = () => {
+	const {setCategory} = useAction();
+
 	const selectStyle: StylesConfig = {
 		container: (styles, props) => {
-			return {...styles, marginTop: 10}
+			return {...styles, marginTop: 9}
 		},
 		control: (styles) => {
 			return {...styles, background: "#373737", borderColor: "#9F9F9F"}
@@ -19,16 +28,18 @@ export const ShulkerCategoriesSelect: FC = () => {
 			return {
 				...styles,
 				margin: 0,
-				background: "#363636",
+				background: "#373737",
 				borderWidth: ["2px", "2px", "0px", "2px"],
 				borderStyle: "solid",
 				borderColor: "#00778F",
 				borderRadius: ["15px", "15px", "0px", "0px"]
 			}
 		},
-
+		singleValue: (style) => {
+			return {...style, color: "white"}
+		},
 		indicatorsContainer: (styles) => {
-			return {display: "none"}
+			return {...styles}
 		}
 	}
 
@@ -40,8 +51,9 @@ export const ShulkerCategoriesSelect: FC = () => {
 				menuPlacement={"top"}
 				closeMenuOnSelect={true}
 				components={makeAnimated()}
-				isMulti
 				options={categoriesList}
+				isClearable={true}
+				onChange={newValue => setCategory(newValue as CategoriesOptions)}
 			/>
 		</div>
 	);

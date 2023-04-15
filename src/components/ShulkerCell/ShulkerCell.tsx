@@ -20,6 +20,7 @@ export const ShulkerCell: FC<{shulkerIndex: number}> = ({shulkerIndex}) => {
 	const thisCellData = cells[shulkerIndex];
 
 	const cellOnClick = () => {
+		console.log("cell on click with mode ", editingMode)
 		switch (editingMode) {
 			case EditingModes.CLEARING_CELL:
 				clearCell();
@@ -43,16 +44,16 @@ export const ShulkerCell: FC<{shulkerIndex: number}> = ({shulkerIndex}) => {
 
 	const fillCell = () => {
 		const mutableCell = cells[shulkerIndex];
-		if (activeIcon && activeIcon.fullName != mutableCell.itemIconName) {
+		if (activeIcon && activeIcon.iconRef != mutableCell.itemIconName) {
 			mutableCell.isEmpty = false;
-			mutableCell.itemIconName = activeIcon.fullName;
-			if (activeIcon.isStackable)
+			mutableCell.itemIconName = activeIcon.iconRef;
+			if (!activeIcon.isStackable)
 				mutableCell.count = null
 			else mutableCell.count = 0;
 
 			updateCells(cells);
 		}
-		else toast.error("icon not selected")
+		else toast.error(editingMode != EditingModes.DEFAULT ? "can`t do this operation" : "icon not selected")
 	}
 
 	const fillAll = () => {

@@ -1,36 +1,35 @@
 import {IIcon} from "../../../utils/iconRefs";
 import {EditingModes} from "../../../components/ShulkerCell";
+import {CategoriesOptions} from "../../../ui/ShulkerCategorySelect";
+import {Enchantment} from "../../../utils/enchantments";
 
-interface ICell {
+export interface IShulkerCellProps {
 	shulkerIndex: number,
 	count: number | null,
 	itemIconName: string,
 	isEmpty: boolean,
 }
 
-interface IEnchantableCell extends ICell{
-	itemType: string
-}
-
-export type IShulkerCellProps = ICell | IEnchantableCell
-
-
-
 export interface IShulkerReducerState {
 	cells: IShulkerCellProps[],
 	activeIcon: IIcon | null,
+	iconEnchants: Enchantment[],
 	activeCountSpinnerId: number,
 	editingMode: EditingModes
 	countSpinnerStep: number,
 	title: string,
 	description: string,
-	price: number
+	price: number,
+	category: CategoriesOptions | null
 }
 
 export enum ShulkerActionTypes {
 	FETCH_SHULKER = "FETCH_SHULKER",
 	SET_ACTIVE_ICON = "SET_ACTIVE_ICON",
 	DEACTIVATE_ACTIVE_ICON_NAME = "DEACTIVATE_ACTIVE_ICON_NAME",
+	ADD_ENCHANTMENT = "ADD_ENCHANTMENT",
+	REMOVE_ENCHANTMENT = "REMOVE_ENCHANTMENT",
+	CLEAR_ENCHANTMENT = "CLEAR_ENCHANTMENT",
 	SET_ACTIVE_COUNT_SPINNER_ID = "SET_ACTIVE_COUNT_SPINNER_ID",
 	REMOVE_ACTIVE_COUNT_SPINNER_ID = "REMOVE_ACTIVE_COUNT_SPINNER_ID",
 	SET_COUNT_SPINNER_STEP = "SET_COUNT_SPINNER_STEP",
@@ -40,7 +39,8 @@ export enum ShulkerActionTypes {
 	UPDATE_CELL = "UPDATE_CELL",
 	CLEAR_SHULKER_INFO = "CLEAR_SHULKER_INFO",
 	SET_EDITING_MODE = "SET_EDITING_MODE",
-	SET_DEFAULT_EDITING_MODE = "SET_DEFAULT_EDITING_MODE"
+	SET_DEFAULT_EDITING_MODE = "SET_DEFAULT_EDITING_MODE",
+	SET_CATEGORY = "SET_CATEGORY"
 }
 
 interface IFetchShulkerAction {
@@ -48,12 +48,12 @@ interface IFetchShulkerAction {
 	payload: IShulkerCellProps[]
 }
 
-interface ISetActiveCellAction {
+interface ISetActiveIconAction {
 	type: ShulkerActionTypes.SET_ACTIVE_ICON,
 	payload: IIcon
 }
 
-interface IDeactivateActiveCellAction {
+interface IDeactivateActiveIconAction {
 	type: ShulkerActionTypes.DEACTIVATE_ACTIVE_ICON_NAME
 }
 
@@ -104,10 +104,31 @@ interface ISetDefaultEditingMode {
 	type: ShulkerActionTypes.SET_DEFAULT_EDITING_MODE
 }
 
-export type ShulkerAction = IFetchShulkerAction   | ISetActiveCellAction
-			| IDeactivateActiveCellAction         | ISetActiveCountSpinnerIdAction
-			| IResetActiveCountSpinnerIdAction    | ISetTitleAction
-			| ISetDescriptionAction               | ISetPriceAction
-			| IUpdateCellsAction                  | ISetCountSpinnerStepAction
-			| IClearShulkerInfoAction             | ISetEditingModeAction
-			| ISetDefaultEditingMode;
+interface ISetCategory {
+	type: ShulkerActionTypes.SET_CATEGORY,
+	payload: CategoriesOptions | null
+}
+
+interface  IAddEnchantment {
+	type: ShulkerActionTypes.ADD_ENCHANTMENT,
+	payload: Enchantment
+}
+
+interface IRemoveEnchantment {
+	type: ShulkerActionTypes.REMOVE_ENCHANTMENT,
+	payload: Enchantment
+}
+
+interface IClearEnchantment {
+	type: ShulkerActionTypes.CLEAR_ENCHANTMENT
+}
+
+export type ShulkerAction = IFetchShulkerAction     | ISetActiveIconAction
+	| IDeactivateActiveIconAction           | ISetActiveCountSpinnerIdAction
+	| IResetActiveCountSpinnerIdAction      | ISetTitleAction
+	| ISetDescriptionAction                 | ISetPriceAction
+	| IUpdateCellsAction                    | ISetCountSpinnerStepAction
+	| IClearShulkerInfoAction               | ISetEditingModeAction
+	| ISetDefaultEditingMode                | ISetCategory
+	|IAddEnchantment                        | IRemoveEnchantment
+	| IClearEnchantment;

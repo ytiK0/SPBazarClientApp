@@ -9,16 +9,16 @@ export const SelectItemCell: FC<IIcon> = (icon) => {
 	const {setActiveIconName, deactivateActiveIconName} = useAction();
 
 	const setImg = () => {
-		if (activeIcon?.fullName != icon.fullName)
+		if (activeIcon?.iconRef != icon.iconRef)
 			setActiveIconName(icon);
 		else deactivateActiveIconName();
 	}
 
 	return (
-		<div className={`${styles.item} ${activeIcon?.fullName === icon.fullName ? styles.selected : ""}`}>
+		<div className={`${styles.item} ${activeIcon?.iconRef === icon.iconRef ? styles.selected : ""}`}>
 			<img onClick={setImg}
 			     className={styles.itemImg}
-			     src={require("/static/img/shulkerIcons/" + icon.fullName)}
+			     src={require("/static/img/shulkerIcons/" + icon.iconRef)}
 			     alt={icon.name}
 			     loading={"lazy"}
 			     draggable={false}/>
